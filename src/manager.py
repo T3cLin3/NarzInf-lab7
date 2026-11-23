@@ -126,4 +126,5 @@ class Manager:
                 or transfer.amount_pln > self.max_transfer_amount]
     
     def is_tenant_blacklisted(self, tenant_name: str) -> bool:
-        return any(entry.name == tenant_name for entry in self.blacklist)
+        normalized_name = tenant_name.strip().lower()
+        return any(entry.name.strip().lower() == normalized_name for entry in self.blacklist)
