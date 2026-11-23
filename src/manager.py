@@ -3,6 +3,9 @@ from typing import List, Tuple
 
 class Manager:
     def __init__(self, parameters: Parameters, min_transfer_amount: float = -5000.0, max_transfer_amount: float = 10000.0):
+        if min_transfer_amount > max_transfer_amount:
+            raise ValueError("Minimum transfer amount cannot be greater than maximum transfer amount")
+        
         self.parameters = parameters 
         self.min_transfer_amount = min_transfer_amount
         self.max_transfer_amount = max_transfer_amount
